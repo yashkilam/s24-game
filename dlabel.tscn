@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpfdei5t0mbmi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_agabw"]
+font_size = 140
+font_color = Color(0.678431, 0, 0, 1)
+
+[node name="dLabel" type="Label"]
+offset_left = -389.0
+offset_top = -111.0
+offset_right = 298.0
+offset_bottom = 81.0
+text = "DETECTED!!!"
+label_settings = SubResource("LabelSettings_agabw")

@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnxbr53ndeuhm"]
+
+[ext_resource type="Texture2D" uid="uid://cm8552ds28ggh" path="res://Icons/CloneIndicator.png" id="1_sk2d3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhrou"]
+atlas = ExtResource("1_sk2d3")
+region = Rect2(0, 16, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcf7q"]
+atlas = ExtResource("1_sk2d3")
+region = Rect2(64, 16, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jsfe"]
+atlas = ExtResource("1_sk2d3")
+region = Rect2(128, 16, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ovmd"]
+atlas = ExtResource("1_sk2d3")
+region = Rect2(192, 16, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ko5n"]
+atlas = ExtResource("1_sk2d3")
+region = Rect2(256, 16, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ary6h"]
+atlas = ExtResource("1_sk2d3")
+region = Rect2(320, 16, 64, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q6532"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhrou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcf7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jsfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ovmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ko5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ary6h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="CloneIndicator" type="AnimatedSprite2D"]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_q6532")
+frame = 1
+frame_progress = 0.748261
