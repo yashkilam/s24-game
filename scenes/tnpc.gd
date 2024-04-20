@@ -9,7 +9,7 @@ func _ready():
 
 func _process(delta):
 	update_clone_status()
-	watchdogging()
+	#watchdogging()
 
 func update_clone_status():
 	if indicator:
@@ -33,15 +33,15 @@ func indicate():
 		indicator.play("default")
 		Global.current_clone = self
 
-func watchdogging():
-	$RayCast2D.look_at(%Player.position)
-	$RayCast2D.rotation = clamp($RayCast2D.rotation,deg_to_rad(-90), deg_to_rad(90))
-	var collider
-	if $RayCast2D.is_colliding():
-		collider = $RayCast2D.get_collider()
-		if collider.name == "Player":
-			$"%Player/Camera2D/Label".visible = true
-		else:
-			$"%Player/Camera2D/Label".visible = false
-	else:
-		$"%Player/Camera2D/Label".visible = false
+#func watchdogging():
+	#$RayCast2D.look_at(%Player.position)
+	#$RayCast2D.rotation = clamp($RayCast2D.rotation,deg_to_rad(-90), deg_to_rad(90))
+	#var collider
+	#if $RayCast2D.is_colliding():
+		#collider = $RayCast2D.get_collider()
+		#if collider.name == "Player":
+			#var packed_indicator = load(
+		#else:
+			#$"%Player/Camera2D/Label".visible = false
+	#else:
+		#$"%Player/Camera2D/Label".visible = false

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bspvubbnpkd2l" path="res://scenes/player.tscn" id="1_rurvo"]
 [ext_resource type="PackedScene" uid="uid://c2fho6b5y58c8" path="res://scenes/guard.tscn" id="2_rbmim"]
 [ext_resource type="PackedScene" uid="uid://ccltw1fc0b33q" path="res://scenes/blank.tscn" id="4_e3h3w"]
-[ext_resource type="Texture2D" uid="uid://c55g7n02k277f" path="res://Interiors/TILES/Simple_Tiles.png" id="5_dxgmk"]
+[ext_resource type="Texture2D" uid="uid://c55g7n02k277f" path="res://TILES/Simple_Tiles.png" id="5_dxgmk"]
 [ext_resource type="Script" path="res://scenes/ui.gd" id="6_15pom"]
 [ext_resource type="Shader" path="res://scenes/transformal.gdshader" id="6_lqars"]
 [ext_resource type="PackedScene" uid="uid://cpfdei5t0mbmi" path="res://scenes/dlabel.tscn" id="7_e2n78"]
@@ -122,3 +122,4 @@ offset_bottom = 360.0
 mouse_filter = 2
 
 [node name="dLabel" parent="Camera2D" instance=ExtResource("7_e2n78")]
+visible = false
