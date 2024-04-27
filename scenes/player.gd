@@ -35,9 +35,14 @@ func sprint():
 
 func move(delta):
 	#if Input.is_action_just_pressed("RMB"):
-	look_at(get_global_mouse_position())
+	var mouse_pos = get_global_mouse_position()
+	look_at(mouse_pos)
+	
 	#var dir = Vector2.RIGHT.rotated(rotation)
-	var dir = Input.get_vector("a", "d", "w", "s")
+	var movement_dir = Input.get_vector("a", "d", "w", "s")
+	var direction_vector = mouse_pos - position
+	var dir = movement_dir.rotated(direction_vector.angle() + PI / 2)
+
 	if dir:
 			state = RUN
 			apply_movement(dir * ACCELERATION * delta)
