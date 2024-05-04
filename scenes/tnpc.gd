@@ -1,8 +1,9 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 var indicator
-var seeing_player = false
 var fov = deg_to_rad(60)
+var detection_mark
+var has_detected_player = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -64,12 +65,25 @@ func watchdogging():
 	if $RayCast2D.is_colliding():
 		collider = $RayCast2D.get_collider()
 		if collider.name == "Player":
-			var packed_indicator = load("res://scenes/dlabel.tscn")
-			seeing_player = true
-
+			if has_detected_player == false:
+				var mark_object = load("res://scenes/detection_mark.tscn")
+				detection_mark = mark_object.instantiate()
+				self.add_child(detection_mark)
+				if self.rotation > deg_to_rad(-90) and self.rotation < deg_to_rad(90):
+					detection_mark.position = Vector2(20, -35)
+				else:
+					detection_mark.position = Vector2(20, 35)
+				detection_mark.global_rotation = 0
+				has_detected_player = true
 		else:
-			$"%Player/Camera2D/dLabel".visible = false
-			seeing_player = false
-
+			if has_detected_player == true:
+				if detection_mark:
+					if is_instance_valid(detection_mark):
+						detection_mark.queue_free()
+						has_detected_player = false
 	else:
-		$"%Player/Camera2D/dLabel".visible = false
+		if has_detected_player == true:
+				if detection_mark:
+					if is_instance_valid(detection_mark):
+						detection_mark.queue_free()
+						has_detected_player = false

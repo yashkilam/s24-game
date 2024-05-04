@@ -72,10 +72,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqfqo"]
 size = Vector2(32, 66)
 
-[node name="Guard" type="RigidBody2D"]
+[node name="Guard" type="CharacterBody2D"]
 input_pickable = true
-gravity_scale = 0.0
-can_sleep = false
+motion_mode = 1
 script = ExtResource("1_adrki")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]

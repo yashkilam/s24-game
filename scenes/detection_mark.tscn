@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlstm5pv7c556"]
+
+[ext_resource type="Texture2D" uid="uid://bro22gefdlchc" path="res://Icons/DetectionMark.png" id="1_8rdnx"]
+
+[node name="DetectionMark" type="Sprite2D"]
+z_index = 2
+texture = ExtResource("1_8rdnx")
