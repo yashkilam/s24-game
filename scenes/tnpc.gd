@@ -1,6 +1,8 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 var indicator
+var detection_mark
+var has_detected_player = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,7 +11,7 @@ func _ready():
 
 func _process(delta):
 	update_clone_status()
-	#watchdogging()
+	watchdogging()
 
 func update_clone_status():
 	if indicator:
@@ -33,15 +35,32 @@ func indicate():
 		indicator.play("default")
 		Global.current_clone = self
 
-#func watchdogging():
-	#$RayCast2D.look_at(%Player.position)
-	#$RayCast2D.rotation = clamp($RayCast2D.rotation,deg_to_rad(-90), deg_to_rad(90))
-	#var collider
-	#if $RayCast2D.is_colliding():
-		#collider = $RayCast2D.get_collider()
-		#if collider.name == "Player":
-			#var packed_indicator = load(
-		#else:
-			#$"%Player/Camera2D/Label".visible = false
-	#else:
-		#$"%Player/Camera2D/Label".visible = false
+func watchdogging():
+	$RayCast2D.look_at(%Player.position)
+	$RayCast2D.rotation = clamp($RayCast2D.rotation,deg_to_rad(-90), deg_to_rad(90))
+	var collider
+	if $RayCast2D.is_colliding():
+		collider = $RayCast2D.get_collider()
+		if collider.name == "Player":
+			if has_detected_player == false:
+				var mark_object = load("res://scenes/detection_mark.tscn")
+				detection_mark = mark_object.instantiate()
+				self.add_child(detection_mark)
+				if self.rotation > deg_to_rad(-90) and self.rotation < deg_to_rad(90):
+					detection_mark.position = Vector2(20, -35)
+				else:
+					detection_mark.position = Vector2(20, 35)
+				detection_mark.global_rotation = 0
+				has_detected_player = true
+		else:
+			if has_detected_player == true:
+				if detection_mark:
+					if is_instance_valid(detection_mark):
+						detection_mark.queue_free()
+						has_detected_player = false
+	else:
+		if has_detected_player == true:
+				if detection_mark:
+					if is_instance_valid(detection_mark):
+						detection_mark.queue_free()
+						has_detected_player = false
